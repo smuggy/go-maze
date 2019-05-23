@@ -1,9 +1,9 @@
 package main
 
 import (
+	"fmt"
 	"github.com/smuggy/go-maze/internal/basics"
 	"github.com/smuggy/go-maze/internal/builders"
-	"fmt"
 )
 
 func sum(x int, y int) int {
