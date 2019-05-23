@@ -16,5 +16,9 @@ func main() {
 	var g = basics.BuildGrid(4, 4)
 	builders.BuildMaze(g)
 	fmt.Print(g.PrintGrid())
+	fmt.Println("\nNext builder...")
+	var g2 = basics.BuildGrid(4, 5)
+	builders.Sidewinder(g2)
+	fmt.Println(g2.PrintGrid())
 	fmt.Println("\nLeaving application...")
 }
