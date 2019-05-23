@@ -1,8 +1,8 @@
 package main
 
 import (
-	"basics"
-	"builders"
+	"github.com/smuggy/go-maze/internal/basics"
+	"github.com/smuggy/go-maze/internal/builders"
 	"fmt"
 )
 
