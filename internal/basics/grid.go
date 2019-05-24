@@ -83,7 +83,7 @@ func (g *Grid) ToString() string {
 	for i, r := range g.cells {
 		output.WriteString(fmt.Sprintf("\n%d:\t", i))
 		for _, c := range r {
-			output.WriteString(fmt.Sprintf("%s\n", c.toString()))
+			output.WriteString(fmt.Sprintf("%s\n", c.ToString()))
 		}
 	}
 	return output.String()
@@ -100,7 +100,7 @@ func (g *Grid) PrintGrid() string {
 		top.WriteString("|")
 		bottom.WriteString("+")
 		for j := zero; j < g.cols; j++ {
-			top.WriteString("   ")
+			top.WriteString(g.cells[i][j].Value)
 			if g.cells[i][j].isLinked(g.cells[i][j].East) {
 				top.WriteString(" ")
 			} else {
@@ -119,4 +119,14 @@ func (g *Grid) PrintGrid() string {
 		output.WriteString("\n")
 	}
 	return output.String()
+}
+
+func (g *Grid) GetCell(r int8, c int8) *Cell {
+	return g.cells[r][c]
+}
+
+func (g *Grid) ClearValues() {
+	for c := range g.EachCell() {
+		c.Value = "   "
+	}
 }

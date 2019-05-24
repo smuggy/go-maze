@@ -35,6 +35,19 @@ func TestFindCellThatIsNotThere(t *testing.T) {
 	}
 }
 
+func TestFindCellWithNilList(t *testing.T) {
+	if find(nil, BuildCell(1, 1)) == true {
+		t.Error("Error: should not have found cell")
+	}
+}
+
+func TestFindCellThatIsNil(t *testing.T) {
+	var cells = createCellSlice()
+	if find(cells, nil) == true {
+		t.Error("Error: should not have found cell")
+	}
+}
+
 func TestRemoveCellValid(t *testing.T) {
 	cells := createCellSlice()
 	if len(cells) != 4 {

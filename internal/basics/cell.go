@@ -12,7 +12,7 @@ type Cell struct {
 	South *Cell
 	East  *Cell
 	West  *Cell
-	links []*Cell
+	Links []*Cell
 }
 
 func BuildCell(x int8, y int8) *Cell {
@@ -30,6 +30,12 @@ func (c *Cell) equals(other Cell) bool {
 }
 
 func find(cells []*Cell, val *Cell) bool {
+	if val == nil {
+		return false
+	}
+	if cells == nil {
+		return false
+	}
 	for i := range cells {
 		if cells[i].equals(*val) == true {
 			return true
@@ -53,7 +59,7 @@ func (c *Cell) Link(other *Cell, bidi bool) {
 	if other == nil {
 		return
 	}
-	c.links = append(c.links, other)
+	c.Links = append(c.Links, other)
 	if bidi == true {
 		other.Link(c, false)
 	}
@@ -63,17 +69,18 @@ func (c *Cell) Unlink(other *Cell) {
 	if other == nil {
 		return
 	}
-	c.links = remove(c.links, other)
+	c.Links = remove(c.Links, other)
 }
 
 func (c *Cell) isLinked(other *Cell) bool {
 	if other == nil {
 		return false
 	}
-	return find(c.links, other)
+	return find(c.Links, other)
 }
 
-func (c *Cell) toString() string {
+func (c *Cell) ToString() string {
 	s := fmt.Sprintf("x=%d,y=%d,n=%p,s=%p,e=%p,w=%p", c.x, c.y, c.North, c.South, c.East, c.West)
 	return s
 }
+
