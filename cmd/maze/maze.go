@@ -14,7 +14,7 @@ func main() {
 	fmt.Print("Starting application...\n\n")
 	//	var d = basics.BuildCell(2, 1)
 	//	fmt.Println(d)
-	var g = basics.BuildGrid(2, 3)
+	var g = basics.BuildGrid(4, 4)
 	builders.BuildMaze(g)
 	fmt.Print(g.PrintGrid())
 //	fmt.Println("\nNext builder...")

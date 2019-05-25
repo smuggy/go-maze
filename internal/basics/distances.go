@@ -10,6 +10,9 @@ type Distances struct {
 }
 
 func BuildDistances(root *Cell) *Distances {
+	if root == nil {
+		return nil
+	}
 	var d = new(Distances)
 	d.root = root
 	d.cells = make(map[*Cell]int)
