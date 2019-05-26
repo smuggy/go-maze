@@ -77,14 +77,14 @@ func TestLinkCells(t *testing.T) {
 	var c1 = cells[1]
 	var c2 = cells[2]
 	c1.Link(c2, false)
-	if find(c1.links, c2) == false {
+	if find(c1.Links, c2) == false {
 		t.Error("c1 should be linked to c2")
 	}
-	if find(c2.links, c1) == true {
+	if find(c2.Links, c1) == true {
 		t.Error("c2 should not be linked to c1")
 	}
 	c1.Unlink(c2)
-	if find(c1.links, c2) == true {
+	if find(c1.Links, c2) == true {
 		t.Error("c1 should not be linked to c2")
 	}
 }
@@ -94,14 +94,14 @@ func TestLinkCellsBi(t *testing.T) {
 	var c1 = cells[1]
 	var c2 = cells[2]
 	c1.Link(c2, true)
-	if find(c1.links, c2) == false {
+	if find(c1.Links, c2) == false {
 		t.Error("c1 should be linked to c2")
 	}
-	if find(c2.links, c1) == false {
+	if find(c2.Links, c1) == false {
 		t.Error("c2 should be linked to c1")
 	}
 	c1.Unlink(c2)
-	if find(c1.links, c2) == true {
+	if find(c1.Links, c2) == true {
 		t.Error("c1 should not be linked to c2")
 	}
 	if c1.isLinked(c2) == true {
@@ -116,7 +116,7 @@ func TestLinkCellsNil(t *testing.T) {
 	cells := createCellSlice()
 	var c1 = cells[1]
 	c1.Link(nil, true)
-	if len(c1.links) != 0 {
+	if len(c1.Links) != 0 {
 		t.Error("c1 should be have no links")
 	}
 	c1.Unlink(nil)
@@ -124,7 +124,7 @@ func TestLinkCellsNil(t *testing.T) {
 
 func TestToString(t *testing.T) {
 	c1 := BuildCell(0, 0)
-	s := c1.toString()
+	s := c1.ToString()
 	if strings.Compare(s, "x=0,y=0,n=0x0,s=0x0,e=0x0,w=0x0") != 0 {
 		t.Errorf("bad string %s", s)
 	}

@@ -52,6 +52,7 @@ func (d *Distances) BuildPath(goal *Cell) *Distances {
 func (d *Distances) ApplyToCellValue() {
 	for c, i := range d.cells {
 
+		fmt.Println(c.ToString(), "\t", i)
 		if i == NoDistanceSet {
 			c.Value = "   "
 		} else {
