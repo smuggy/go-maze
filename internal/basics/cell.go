@@ -83,4 +83,3 @@ func (c *Cell) ToString() string {
 	s := fmt.Sprintf("x=%d,y=%d,n=%p,s=%p,e=%p,w=%p", c.x, c.y, c.North, c.South, c.East, c.West)
 	return s
 }
-
