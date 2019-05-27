@@ -16,19 +16,20 @@ func TestBuildDistances(t *testing.T) {
 	d := BuildDistances(g.get(0, 0))
 	if d == nil {
 		t.Error("should have built distances map.")
-	}
-	if len(d.cells) != 1 {
-		t.Error("should have one item in cell list")
-	}
-	if d.GetCellDistance(g.get(0, 0)) != 0 {
-		t.Error("expecting zero distance")
-	}
-	if d.GetCellDistance(g.get(0, 1)) != NoDistanceSet {
-		t.Error("no distance was set.")
-	}
-	d.SetCellDistance(g.get(0, 1), 1)
-	if d.GetCellDistance(g.get(0, 1)) != 1 {
-		t.Error("distnace should be one.")
+	} else {
+		if len(d.cells) != 1 {
+			t.Error("should have one item in cell list")
+		}
+		if d.GetCellDistance(g.get(0, 0)) != 0 {
+			t.Error("expecting zero distance")
+		}
+		if d.GetCellDistance(g.get(0, 1)) != NoDistanceSet {
+			t.Error("no distance was set.")
+		}
+		d.SetCellDistance(g.get(0, 1), 1)
+		if d.GetCellDistance(g.get(0, 1)) != 1 {
+			t.Error("distnace should be one.")
+		}
 	}
 }
 
