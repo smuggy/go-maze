@@ -81,3 +81,12 @@ func TestGrid_EachCell(t *testing.T) {
 		}
 	}
 }
+
+func TestGrid_Clear(t *testing.T) {
+	g := BuildGrid(1, 1)
+	g.GetCell(0, 0).Value = "ABC"
+	g.ClearValues()
+	if g.GetCell(0, 0).Value != "   " {
+		t.Error("Value should be cleared.")
+	}
+}
