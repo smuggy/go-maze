@@ -11,8 +11,8 @@ func Sidewinder(grid *basics.Grid) {
 			run = run[:0]
 		}
 		run = append(run, c)
-		if c.East == nil || ((c.North != nil) && (getRand(2) == 0)) {
-			var member = run[getRand(len(run)-1)]
+		if c.East == nil || ((c.North != nil) && (basics.GetRand(2) == 0)) {
+			var member = run[basics.GetRand(len(run)-1)]
 			if member.North != nil {
 				member.Link(member.North, true)
 			}

@@ -19,7 +19,7 @@ func binaryTree(grid *basics.Grid) {
 			neighbors = append(neighbors, cell.East)
 		}
 		if len(neighbors) > 0 {
-			i := getRand(len(neighbors))
+			i := basics.GetRand(len(neighbors))
 			cell.Link(neighbors[i], true)
 		}
 	}

@@ -15,22 +15,6 @@ type Grid struct {
 	cells [][]*Cell
 }
 
-func (g *Grid) get(x int8, y int8) *Cell {
-	if x < 0 {
-		return nil
-	}
-	if y < 0 {
-		return nil
-	}
-	if x > (g.rows - one) {
-		return nil
-	}
-	if y > (g.cols - one) {
-		return nil
-	}
-	return g.cells[x][y]
-}
-
 func BuildGrid(rows int8, cols int8) *Grid {
 	if rows <= zero {
 		return nil
@@ -48,6 +32,22 @@ func BuildGrid(rows int8, cols int8) *Grid {
 	g := Grid{rows, cols, cells}
 	g.config()
 	return &g
+}
+
+func (g *Grid) get(x int8, y int8) *Cell {
+	if x < 0 {
+		return nil
+	}
+	if y < 0 {
+		return nil
+	}
+	if x > (g.rows - one) {
+		return nil
+	}
+	if y > (g.cols - one) {
+		return nil
+	}
+	return g.cells[x][y]
 }
 
 func (g *Grid) Size() int16 {
@@ -129,4 +129,10 @@ func (g *Grid) ClearValues() {
 	for c := range g.EachCell() {
 		c.Value = "   "
 	}
+}
+
+func (g *Grid) GetRandomCell() *Cell {
+	row := GetRand8(g.rows)
+	col := GetRand8(g.cols)
+	return g.GetCell(row, col)
 }
