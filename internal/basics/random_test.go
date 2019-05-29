@@ -5,7 +5,7 @@ import (
 )
 
 func TestRandomVal(t *testing.T) {
-	reInitRand(0)
+	ReInitRand(0)
 	if GetRand(5) != 4 {
 		t.Error("getRand(5) not returning as expected, should be 4")
 	}

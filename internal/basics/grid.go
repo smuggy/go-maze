@@ -101,12 +101,12 @@ func (g *Grid) PrintGrid() string {
 		bottom.WriteString("+")
 		for j := zero; j < g.cols; j++ {
 			top.WriteString(g.cells[i][j].Value)
-			if g.cells[i][j].isLinked(g.cells[i][j].East) {
+			if g.cells[i][j].IsLinked(g.cells[i][j].East) {
 				top.WriteString(" ")
 			} else {
 				top.WriteString("|")
 			}
-			if g.cells[i][j].isLinked(g.cells[i][j].South) {
+			if g.cells[i][j].IsLinked(g.cells[i][j].South) {
 				bottom.WriteString("   ")
 			} else {
 				bottom.WriteString("---")

@@ -10,7 +10,9 @@ type MazeBuilder interface {
 type BinaryTree struct{}
 
 func (b BinaryTree) Build(grid *basics.Grid) {
-	buildBinaryTreeMaze(grid)
+	if grid != nil {
+		buildBinaryTreeMaze(grid)
+	}
 }
 
 func buildBinaryTreeMaze(grid *basics.Grid) {

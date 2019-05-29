@@ -11,7 +11,7 @@ func init() {
 	rand.Seed(seed)
 }
 
-func reInitRand(newSeed int64) {
+func ReInitRand(newSeed int64) {
 	rand.Seed(newSeed)
 }
 

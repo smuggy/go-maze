@@ -78,7 +78,7 @@ func (c *Cell) Unlink(other *Cell) {
 	c.Links = remove(c.Links, other)
 }
 
-func (c *Cell) isLinked(other *Cell) bool {
+func (c *Cell) IsLinked(other *Cell) bool {
 	if other == nil {
 		return false
 	}

@@ -104,10 +104,10 @@ func TestLinkCellsBi(t *testing.T) {
 	if find(c1.Links, c2) == true {
 		t.Error("c1 should not be linked to c2")
 	}
-	if c1.isLinked(c2) == true {
+	if c1.IsLinked(c2) == true {
 		t.Error("c1 should not be linked to c2")
 	}
-	if c1.isLinked(nil) == true {
+	if c1.IsLinked(nil) == true {
 		t.Error("c1 cannot be linked to nil")
 	}
 }
