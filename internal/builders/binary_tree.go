@@ -4,14 +4,20 @@ import (
 	"github.com/smuggy/go-maze/internal/basics"
 )
 
-func BuildMaze(grid *basics.Grid) {
-	binaryTree(grid)
+type MazeBuilder interface {
+	Build(grid *basics.Grid)
+}
+type BinaryTree struct{}
+
+func (b BinaryTree) Build(grid *basics.Grid) {
+	buildBinaryTreeMaze(grid)
 }
 
-func binaryTree(grid *basics.Grid) {
+func buildBinaryTreeMaze(grid *basics.Grid) {
 
+	neighbors := make([]*basics.Cell, 0, 4)
 	for cell := range grid.EachCell() {
-		neighbors := make([]*basics.Cell, 0, 2)
+		neighbors = neighbors[:0]
 		if cell.North != nil {
 			neighbors = append(neighbors, cell.North)
 		}

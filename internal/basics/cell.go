@@ -16,6 +16,12 @@ type Cell struct {
 }
 
 func BuildCell(x int8, y int8) *Cell {
+	if x < 0 {
+		return nil
+	}
+	if y < 0 {
+		return nil
+	}
 	return &(Cell{x, y, "   ", nil, nil, nil, nil, make([]*Cell, 0, 5)})
 }
 

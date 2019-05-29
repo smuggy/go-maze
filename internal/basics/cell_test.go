@@ -122,6 +122,17 @@ func TestLinkCellsNil(t *testing.T) {
 	c1.Unlink(nil)
 }
 
+func TestBuildInvalidRowOrCol(t *testing.T) {
+	c := BuildCell(-1, 3)
+	if c != nil {
+		t.Error("cannot build with negative row value")
+	}
+	c = BuildCell(1, -3)
+	if c != nil {
+		t.Error("cannot build with negative col value")
+	}
+}
+
 func TestToString(t *testing.T) {
 	c1 := BuildCell(0, 0)
 	s := c1.ToString()

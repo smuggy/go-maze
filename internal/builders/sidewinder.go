@@ -4,10 +4,17 @@ import (
 	"github.com/smuggy/go-maze/internal/basics"
 )
 
-func Sidewinder(grid *basics.Grid) {
+type Sidewinder struct{}
+
+func (s Sidewinder) Build(g *basics.Grid) {
+	buildSidewinderMaze(g)
+}
+
+func buildSidewinderMaze(grid *basics.Grid) {
 	var run = make([]*basics.Cell, 0, 10)
 	for c := range grid.EachCell() {
 		if c.West == nil {
+			// Start of new row...
 			run = run[:0]
 		}
 		run = append(run, c)

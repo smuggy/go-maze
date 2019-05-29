@@ -15,7 +15,8 @@ func main() {
 	//	var d = basics.BuildCell(2, 1)
 	//	fmt.Println(d)
 	var g = basics.BuildGrid(4, 4)
-	builders.BuildMaze(g)
+	var b = createBuilder()
+	b.Build(g)
 	fmt.Print(g.PrintGrid())
 	//	fmt.Println("\nNext builder...")
 	//	var g2 = basics.BuildGrid(4, 5)
@@ -28,4 +29,7 @@ func main() {
 	fmt.Println(g.PrintGrid())
 
 	fmt.Println("\nLeaving application...")
+}
+func createBuilder() builders.MazeBuilder {
+	return builders.BinaryTree{}
 }
