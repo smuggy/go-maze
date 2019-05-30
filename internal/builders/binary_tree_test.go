@@ -9,6 +9,11 @@ func TestBinaryTree(t *testing.T) {
 	g := basics.BuildGrid(2, 2)
 	basics.ReInitRand(1)
 	bt := BinaryTree{}
+	for c := range g.EachCell() {
+		if len(c.Links) != 0 {
+			t.Error("starting link size should be zero")
+		}
+	}
 	bt.Build(g)
 	if len(g.GetCell(0, 0).Links) != 1 ||
 		g.GetCell(0, 0).IsLinked(g.GetCell(0, 1)) == false {
