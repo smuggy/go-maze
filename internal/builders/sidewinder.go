@@ -7,7 +7,9 @@ import (
 type Sidewinder struct{}
 
 func (s Sidewinder) Build(g *basics.Grid) {
-	buildSidewinderMaze(g)
+	if g != nil {
+		buildSidewinderMaze(g)
+	}
 }
 
 func buildSidewinderMaze(grid *basics.Grid) {
