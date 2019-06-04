@@ -7,6 +7,7 @@ import (
 type MazeBuilder interface {
 	Build(grid *basics.Grid)
 }
+
 type BinaryTree struct{}
 
 func (b BinaryTree) Build(grid *basics.Grid) {

@@ -6,8 +6,10 @@ import (
 	"strings"
 )
 
-const zero = int8(0)
-const one = int8(1)
+const (
+	zero = int8(0)
+	one  = int8(1)
+)
 
 type Grid struct {
 	rows  int8
@@ -135,4 +137,13 @@ func (g *Grid) GetRandomCell() *Cell {
 	row := GetRand8(g.rows)
 	col := GetRand8(g.cols)
 	return g.GetCell(row, col)
+}
+
+func (g *Grid) IsFull() bool {
+	for c := range g.EachCell() {
+		if len(c.Links) == 0 {
+			return false
+		}
+	}
+	return true
 }
