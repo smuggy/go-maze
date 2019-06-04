@@ -25,7 +25,7 @@ func BuildCell(x int8, y int8) *Cell {
 	return &(Cell{x, y, "   ", nil, nil, nil, nil, make([]*Cell, 0, 5)})
 }
 
-func (c *Cell) equals(other Cell) bool {
+func (c *Cell) Equals(other Cell) bool {
 	if c.x != other.x {
 		return false
 	}
@@ -43,7 +43,7 @@ func find(cells []*Cell, val *Cell) bool {
 		return false
 	}
 	for i := range cells {
-		if cells[i].equals(*val) == true {
+		if cells[i].Equals(*val) == true {
 			return true
 		}
 	}
@@ -53,7 +53,7 @@ func find(cells []*Cell, val *Cell) bool {
 func remove(cells []*Cell, val *Cell) []*Cell {
 	var newCells = make([]*Cell, 0, 5)
 	for _, c := range cells {
-		if c.equals(*val) {
+		if c.Equals(*val) {
 			continue
 		}
 		newCells = append(newCells, c)

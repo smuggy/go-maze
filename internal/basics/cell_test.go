@@ -8,7 +8,7 @@ import (
 func TestEqualsNotEquals(t *testing.T) {
 	var c1 = BuildCell(1, 2)
 	var c2 = BuildCell(2, 2)
-	if c1.equals(*c2) == true {
+	if c1.Equals(*c2) == true {
 		t.Error("Error: should not be equal...", c1, c2)
 	}
 }
@@ -16,7 +16,7 @@ func TestEqualsNotEquals(t *testing.T) {
 func TestEqualsEquals(t *testing.T) {
 	var c1 = BuildCell(1, 2)
 	var c2 = BuildCell(1, 2)
-	if c1.equals(*c2) == false {
+	if c1.Equals(*c2) == false {
 		t.Error("Error: should be equal...", c1, c2)
 	}
 }
