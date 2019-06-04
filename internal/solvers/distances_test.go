@@ -21,14 +21,14 @@ func TestBuildDistances(t *testing.T) {
 		if len(d.cells) != 1 {
 			t.Error("should have one item in cell list")
 		}
-		if d.GetCellDistance(g.GetCell(0, 0)) != 0 {
+		if d.getCellDistance(g.GetCell(0, 0)) != 0 {
 			t.Error("expecting zero distance")
 		}
-		if d.GetCellDistance(g.GetCell(0, 1)) != NoDistanceSet {
+		if d.getCellDistance(g.GetCell(0, 1)) != noDistanceSet {
 			t.Error("no distance was set.")
 		}
-		d.SetCellDistance(g.GetCell(0, 1), 1)
-		if d.GetCellDistance(g.GetCell(0, 1)) != 1 {
+		d.setCellDistance(g.GetCell(0, 1), 1)
+		if d.getCellDistance(g.GetCell(0, 1)) != 1 {
 			t.Error("distnace should be one.")
 		}
 	}
@@ -37,8 +37,8 @@ func TestBuildDistances(t *testing.T) {
 func TestBuildPathRoot(t *testing.T) {
 	g := buildSimpleGrid()
 	d := buildDistances(g.GetCell(0, 0))
-	d.SetCellDistance(g.GetCell(0, 1), 1)
-	b := d.BuildPath(g.GetCell(0, 0))
+	d.setCellDistance(g.GetCell(0, 1), 1)
+	b := d.buildPath(g.GetCell(0, 0))
 	if b.cells[g.GetCell(0, 0)] != 0 {
 		t.Error("0,0 Value incorrectly set")
 	}
@@ -47,8 +47,8 @@ func TestBuildPathRoot(t *testing.T) {
 func TestBuildPath(t *testing.T) {
 	g := buildSimpleGrid()
 	d := buildDistances(g.GetCell(0, 0))
-	d.SetCellDistance(g.GetCell(0, 1), 1)
-	b := d.BuildPath(g.GetCell(0, 1))
+	d.setCellDistance(g.GetCell(0, 1), 1)
+	b := d.buildPath(g.GetCell(0, 1))
 	if b.cells[g.GetCell(0, 1)] != 1 {
 		t.Error("0,1 Value incorrectly set")
 	}
@@ -57,8 +57,8 @@ func TestBuildPath(t *testing.T) {
 func TestBuildApplyAll(t *testing.T) {
 	g := buildSimpleGrid()
 	d := buildDistances(g.GetCell(0, 0))
-	d.SetCellDistance(g.GetCell(0, 1), 1)
-	d.ApplyToCellValue()
+	d.setCellDistance(g.GetCell(0, 1), 1)
+	d.applyToCellValue()
 	if g.GetCell(0, 0).Value != "  0" {
 		t.Error("0,0 Value incorrectly set")
 	}
@@ -70,8 +70,8 @@ func TestBuildApplyAll(t *testing.T) {
 func TestBuildApplyRoot(t *testing.T) {
 	g := buildSimpleGrid()
 	d := buildDistances(g.GetCell(0, 0))
-	d.SetCellDistance(g.GetCell(0, 1), NoDistanceSet)
-	d.ApplyToCellValue()
+	d.setCellDistance(g.GetCell(0, 1), noDistanceSet)
+	d.applyToCellValue()
 	if g.GetCell(0, 0).Value != "  0" {
 		t.Error("0,0 Value incorrectly set")
 	}

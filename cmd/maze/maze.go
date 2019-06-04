@@ -14,7 +14,7 @@ func main() {
 	fmt.Print("Starting application...\n\n")
 	//	var d = basics.BuildCell(2, 1)
 	//	fmt.Println(d)
-	var g = basics.BuildGrid(6, 6)
+	var g = basics.BuildGrid(10, 12)
 	var b = createBuilder()
 	b.Build(g)
 	fmt.Print(g.PrintGrid())
@@ -24,8 +24,8 @@ func main() {
 	//	fmt.Println(g2.PrintGrid())
 	fmt.Println("\nApply solver to grid...")
 
-	solutions := solvers.DijkstraSolver(g.GetCell(0, 0))
-	solutions.ApplyToCellValue()
+	var solution solvers.Solution = solvers.DijkstraSolver(g.GetCell(0, 0))
+	solution.ApplyDistances()
 	fmt.Println(g.PrintGrid())
 
 	fmt.Println("\nLeaving application...")
