@@ -62,3 +62,16 @@ func (d *distances) applyToCellValue() {
 		}
 	}
 }
+
+func (d *distances) getMaxCell(start *basics.Cell) *basics.Cell {
+	var maxDist = 0
+	var maxCell = start
+
+	for c, dist := range d.cells {
+		if dist > maxDist {
+			maxCell = c
+			maxDist = dist
+		}
+	}
+	return maxCell
+}

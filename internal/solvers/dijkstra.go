@@ -6,10 +6,12 @@ import (
 
 type Solution interface {
 	ApplyDistances()
+	MaxPath() Solution
 }
 
 type DijkstraSolution struct {
-	dist *distances
+	dist  *distances
+	start *basics.Cell
 }
 
 func DijkstraSolver(start *basics.Cell) DijkstraSolution {
@@ -20,7 +22,7 @@ func DijkstraSolver(start *basics.Cell) DijkstraSolution {
 	for len(frontier) > 0 {
 		frontier = findNewFrontier(frontier, gridDistances)
 	}
-	return DijkstraSolution{dist: gridDistances}
+	return DijkstraSolution{dist: gridDistances, start: start}
 }
 
 func findNewFrontier(frontier []*basics.Cell, gridDistances *distances) []*basics.Cell {
@@ -39,4 +41,10 @@ func findNewFrontier(frontier []*basics.Cell, gridDistances *distances) []*basic
 
 func (sol DijkstraSolution) ApplyDistances() {
 	sol.dist.applyToCellValue()
+}
+
+func (sol DijkstraSolution) MaxPath() Solution {
+	var goal = sol.dist.getMaxCell(sol.start)
+	var bc = sol.dist.buildPath(goal)
+	return DijkstraSolution{dist: bc, start: sol.start}
 }

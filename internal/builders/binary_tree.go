@@ -4,10 +4,6 @@ import (
 	"github.com/smuggy/go-maze/internal/basics"
 )
 
-type MazeBuilder interface {
-	Build(grid *basics.Grid)
-}
-
 type BinaryTree struct{}
 
 func (b BinaryTree) Build(grid *basics.Grid) {
